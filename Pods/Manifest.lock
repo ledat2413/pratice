@@ -1,0 +1,44 @@
+PODS:
+  - Alamofire (4.9.1)
+  - AlamofireObjectMapper (5.2.1):
+    - Alamofire (~> 4.7)
+    - ObjectMapper (~> 3.4)
+  - JGProgressHUD (2.1)
+  - ObjectMapper (3.5.3)
+  - RxCocoa (5.1.1):
+    - RxRelay (~> 5)
+    - RxSwift (~> 5)
+  - RxRelay (5.1.1):
+    - RxSwift (~> 5)
+  - RxSwift (5.1.1)
+
+DEPENDENCIES:
+  - Alamofire (~> 4.6)
+  - AlamofireObjectMapper (~> 5.0)
+  - JGProgressHUD
+  - ObjectMapper (~> 3.1)
+  - RxCocoa
+  - RxSwift
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - AlamofireObjectMapper
+    - JGProgressHUD
+    - ObjectMapper
+    - RxCocoa
+    - RxRelay
+    - RxSwift
+
+SPEC CHECKSUMS:
+  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
+  AlamofireObjectMapper: 1989f690e982b71921b9253f53a4f33a9bc00d88
+  JGProgressHUD: aa403e9a5b45cae98903c4600cccdd98c0c3ec90
+  ObjectMapper: 97111c97e054a6ee25917662106689f0b4127b37
+  RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
+  RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
+  RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
+
+PODFILE CHECKSUM: 847a7090fe550cd2dd632d1fbbacd8c8fa9c0c8d
+
+COCOAPODS: 1.9.3
