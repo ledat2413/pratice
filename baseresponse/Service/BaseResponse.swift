@@ -12,7 +12,7 @@ import ObjectMapper
 
 class BaseResponse<T: Mappable>: Mappable{
     var status: Status = Status()
-    var result: [T] = []
+    var result: T?
     
     required init?(map: Map) {
     }
@@ -23,7 +23,7 @@ class BaseResponse<T: Mappable>: Mappable{
     }
     
     func isSuccessCode() -> Bool? {
-        return status.code == 1
+        return status.code == 200
     }
 }
 
