@@ -11,7 +11,7 @@ import Alamofire
 
 enum APIRouter: URLRequestConvertible {
     // =========== Begin define api ===========
-    case getAllProducts
+    case getAllHomeData
    
     
     // =========== End define api ===========
@@ -19,7 +19,7 @@ enum APIRouter: URLRequestConvertible {
     // MARK: - HTTPMethod
     private var method: HTTPMethod {
         switch self {
-        case .getAllProducts:
+        case .getAllHomeData:
             return .get
         }
     }
@@ -27,8 +27,8 @@ enum APIRouter: URLRequestConvertible {
     // MARK: - Path
     private var path: String {
         switch self {
-        case .getAllProducts:
-            return "getAllProducts2"
+        case .getAllHomeData:
+            return "/Home/GetAllHomeData"
        
         }
     }
@@ -37,7 +37,7 @@ enum APIRouter: URLRequestConvertible {
     private var headers: HTTPHeaders {
         let headers = ["Accept": "application/json"]
         switch self {
-        case .getAllProducts:
+        case .getAllHomeData:
             break
         }
         
@@ -47,7 +47,7 @@ enum APIRouter: URLRequestConvertible {
     // MARK: - Parameters
     private var parameters: Parameters? {
         switch self {
-        case .getAllProducts:
+        case .getAllHomeData:
             return [:]
        
         }
