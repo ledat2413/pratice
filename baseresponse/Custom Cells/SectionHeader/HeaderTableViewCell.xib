@@ -17,8 +17,11 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="fk7-Tw-WNu">
-                        <rect key="frame" x="10" y="50" width="404" height="214"/>
+                        <rect key="frame" x="10" y="50" width="404" height="204"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="204" id="TXZ-Wc-SC0"/>
+                        </constraints>
                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="wSu-9O-iOX">
                             <size key="itemSize" width="130" height="180"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -30,11 +33,13 @@
                         <rect key="frame" x="10" y="10" width="135" height="35"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="135" id="Axd-3D-tBz"/>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="135" id="iHI-4q-Y6N"/>
                         </constraints>
                     </imageView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GAo-QW-Qlb">
-                        <rect key="frame" x="320" y="10" width="94" height="35"/>
+                        <rect key="frame" x="320" y="10" width="94" height="26"/>
                         <constraints>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="94" id="Y5Y-3Q-JpT"/>
                             <constraint firstAttribute="width" constant="94" id="t2j-wS-3HF"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
@@ -48,23 +53,27 @@
                     </button>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="fk7-Tw-WNu" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="141-PP-6vK"/>
-                    <constraint firstItem="fk7-Tw-WNu" firstAttribute="top" secondItem="GAo-QW-Qlb" secondAttribute="bottom" constant="5" id="9j9-Fc-hFZ"/>
-                    <constraint firstItem="fk7-Tw-WNu" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="50" id="9tU-JS-rQN"/>
-                    <constraint firstAttribute="trailing" secondItem="fk7-Tw-WNu" secondAttribute="trailing" constant="10" id="Frt-2d-IT3"/>
-                    <constraint firstAttribute="bottom" secondItem="fk7-Tw-WNu" secondAttribute="bottom" id="Vbz-ly-n5Y"/>
+                    <constraint firstItem="RXB-OG-bxS" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="65q-zq-Qhj"/>
+                    <constraint firstItem="fk7-Tw-WNu" firstAttribute="top" secondItem="RXB-OG-bxS" secondAttribute="bottom" constant="5" id="B6A-DE-cQW"/>
+                    <constraint firstItem="RXB-OG-bxS" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="P3h-5p-zIs"/>
+                    <constraint firstItem="GAo-QW-Qlb" firstAttribute="leading" secondItem="RXB-OG-bxS" secondAttribute="trailing" constant="175" id="Y8u-1H-19D"/>
                     <constraint firstAttribute="trailing" secondItem="GAo-QW-Qlb" secondAttribute="trailing" constant="10" id="baF-JP-NWd"/>
                     <constraint firstItem="RXB-OG-bxS" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="dNc-4y-wGL"/>
-                    <constraint firstItem="fk7-Tw-WNu" firstAttribute="top" secondItem="RXB-OG-bxS" secondAttribute="bottom" constant="5" id="ezY-Lu-T7L"/>
+                    <constraint firstAttribute="trailing" secondItem="fk7-Tw-WNu" secondAttribute="trailing" constant="10" id="flk-xW-EXj"/>
                     <constraint firstItem="GAo-QW-Qlb" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="ggj-I4-bdD"/>
+                    <constraint firstAttribute="bottom" secondItem="fk7-Tw-WNu" secondAttribute="bottom" constant="10" id="hO5-1J-pLP"/>
+                    <constraint firstAttribute="trailing" secondItem="GAo-QW-Qlb" secondAttribute="trailing" constant="10" id="sLh-E2-CB5"/>
+                    <constraint firstItem="fk7-Tw-WNu" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="u34-Qq-OCx"/>
+                    <constraint firstItem="GAo-QW-Qlb" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="xne-yc-YOY"/>
                     <constraint firstItem="RXB-OG-bxS" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="ygc-7i-Rzp"/>
+                    <constraint firstItem="fk7-Tw-WNu" firstAttribute="top" secondItem="GAo-QW-Qlb" secondAttribute="bottom" constant="14" id="yqw-Ow-pyl"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="collectionView" destination="fk7-Tw-WNu" id="hKH-jV-0O3"/>
-                <outlet property="st1_col_btnViewMore" destination="GAo-QW-Qlb" id="dZh-pF-v77"/>
-                <outlet property="st1_col_imgView" destination="RXB-OG-bxS" id="bYH-Yj-cMM"/>
+                <outlet property="section1ImageView" destination="RXB-OG-bxS" id="bnK-xT-Jfa"/>
+                <outlet property="section1ViewMoreButton" destination="GAo-QW-Qlb" id="v9y-ti-pw9"/>
             </connections>
             <point key="canvasLocation" x="126.08695652173914" y="196.875"/>
         </tableViewCell>

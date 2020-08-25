@@ -45,7 +45,7 @@
                             <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </state>
                         <connections>
-                            <action selector="st2_col_btnAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="xkV-4d-BOK"/>
+                            <action selector="sectionViewMoreAction1:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="YS5-sP-sdt"/>
                         </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dành riêng cho bạn" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6dq-vQ-g1g">
@@ -69,7 +69,7 @@
                             <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </state>
                         <connections>
-                            <action selector="st2_col_btnAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="d5A-AR-8Rj"/>
+                            <action selector="sectionViewMoreAction2_" destination="KGk-i7-Jjw" eventType="touchUpInside" id="O0v-mg-AKJ"/>
                         </connections>
                     </button>
                 </subviews>
@@ -92,11 +92,17 @@
                     <constraint firstItem="B3d-5E-jc0" firstAttribute="top" secondItem="O38-5r-EXF" secondAttribute="bottom" constant="10" id="saJ-Xm-ees"/>
                 </constraints>
             </tableViewCellContentView>
+            <constraints>
+                <constraint firstItem="B3d-5E-jc0" firstAttribute="centerY" secondItem="njF-e1-oar" secondAttribute="centerY" id="5TL-jz-Tt5"/>
+                <constraint firstItem="B3d-5E-jc0" firstAttribute="centerX" secondItem="njF-e1-oar" secondAttribute="centerX" id="zZs-6V-K7R"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="collectionView" destination="B3d-5E-jc0" id="WSG-a9-tmR"/>
-                <outlet property="st2_col_btnViewMore" destination="O38-5r-EXF" id="c5t-fH-BMW"/>
-                <outlet property="st2_col_labelFind" destination="Taj-W9-Rw8" id="9ll-I9-N1A"/>
+                <outlet property="section2FindLabel" destination="Taj-W9-Rw8" id="N4U-wT-51y"/>
+                <outlet property="section2ForYouLabel" destination="6dq-vQ-g1g" id="knw-D8-ubg"/>
+                <outlet property="section2ViewMoreButton1" destination="O38-5r-EXF" id="k6J-dX-TG7"/>
+                <outlet property="section2ViewMoreButton2" destination="F9Y-QE-DSR" id="zNY-Yi-f6S"/>
             </connections>
             <point key="canvasLocation" x="195.6521739130435" y="146.65178571428569"/>
         </tableViewCell>

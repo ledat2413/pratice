@@ -9,63 +9,127 @@
 import UIKit
 
 class Section3TableViewCell: UITableViewCell {
-
+    
     //MARK: --IBOutlet
     @IBOutlet weak var collectionView: UICollectionView!
     
     //MARK: --Vars
-    var dataSource1:[ForYou] = []
-  
+    var dataForYou:[ForYou] = []
+    private let cellIdentifier = "Section3CollectionViewCell"
+    private let viewControllerIdentifier = "DetailViewController"
     
+    
+    //MARK: --View Lifecycle
     override func awakeFromNib() {
         super.awakeFromNib()
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.register(UINib(nibName: "Section3CollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "Section3CollectionViewCell")
-        loadForYou()
+        collectionView.isScrollEnabled = false
+        collectionView.register(UINib(nibName: cellIdentifier, bundle: nil), forCellWithReuseIdentifier: cellIdentifier)
+        loadForYou(dataForYou: dataForYou)
+    }
+    
+    //MARK: --Navigation Segue
+    func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let forYouDetailVC = segue.destination as? DetailViewController, let forYou = sender as? ForYou {
+            forYouDetailVC.dataForYou = forYou
+        }
     }
 
+    private func showDetailView(forYou: ForYou){
+        let detailForYouVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: viewControllerIdentifier) as! DetailViewController
+        detailForYouVC.dataForYou = ForYou(itemRatingScore: forYou.itemRatingScore, brandID: forYou.brandID, currency: forYou.currency, id: forYou.id, shopID: forYou.shopID, itemImg: forYou.itemImg, itemTitle: forYou.itemTitle, categoryID: forYou.categoryID, itemDiscountPrice: forYou.itemDiscountPrice, itemPrice: forYou.itemPrice, itemID: forYou.itemID, itemDiscount: forYou.itemDiscount, itemURL: forYou.itemURL, skuID: forYou.skuID)
+//        present(detailForYouVC,animated: true,completion: nil)
+    }
+
+    //MARK: --Load Data
+    func loadForYou(dataForYou:[ForYou]){
+        self.dataForYou = dataForYou
+        collectionView.reloadData()
+    }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
-    }
-    
-    //MARK: --Func
-    
-    private func loadForYou(){
-        MGConnection.requestObject(APIRouter.getAllHomeData, Data.self) { (result, error) in
-            guard error == nil else{
-                print("Error \(String(describing: error?.mErrorMessage))")
-                return
-            }
-            if let results = result{
-                self.dataSource1 = results.foryou
-            }
-            self.collectionView.reloadData()
-        }
     }
     
 }
 
 extension Section3TableViewCell: UICollectionViewDelegate, UICollectionViewDataSource{
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let forYou = dataForYou[indexPath.row]
+        collectionView.deselectItem(at: indexPath, animated: true)
+        showDetailView(forYou: forYou)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dataSource1.count
+        return dataForYou.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Section3CollectionViewCell", for: indexPath) as! Section3CollectionViewCell
         
-        let forYou = dataSource1[indexPath.row]
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as? Section3CollectionViewCell else { fatalError() }
         
-        cell.st3_colCell_labelTitle.text = forYou.itemTitle
-        cell.st3_colCell_labelPercent.text = forYou.itemDiscountPrice
-        cell.st3_colCell_imgView.sd_setImage(with: URL(string: forYou.itemImg), placeholderImage: UIImage(named: "heart"))
+        let forYou = dataForYou[indexPath.row]
+        cell.thumbnailImageView.sd_setImage(with: URL(string: forYou.itemImg), placeholderImage: UIImage(systemName: "heart"))
+        cell.thumbnailTitleLabel.text = forYou.itemTitle
+        cell.thumbnailNewPriceLabel.text = forYou.itemDiscountPrice
+        cell.thumbnailOldPriceLabel.text = forYou.itemPrice
+        cell.thumbnailPercenLabel.text = forYou.itemDiscount
+        cell.thumbnailRatingLabel.text = "(\(forYou.itemRatingScore))"
+        
+        switch Double(forYou.itemRatingScore) {
+        case 0:
+            cell.star1Button.setImage(UIImage(systemName: "star"), for: .normal)
+            cell.star2Button.setImage(UIImage(systemName: "star"), for: .normal)
+            cell.star3Button.setImage(UIImage(systemName: "star"), for: .normal)
+            cell.star4Button.setImage(UIImage(systemName: "star"), for: .normal)
+            cell.star5Button.setImage(UIImage(systemName: "star"), for: .normal)
+        case 1:
+            cell.star1Button.setImage(UIImage(systemName: "star.fill"), for: .normal)
+            cell.star2Button.setImage(UIImage(systemName: "star"), for: .normal)
+            cell.star3Button.setImage(UIImage(systemName: "star"), for: .normal)
+            cell.star4Button.setImage(UIImage(systemName: "star"), for: .normal)
+            cell.star5Button.setImage(UIImage(systemName: "star"), for: .normal)
+        case 2:
+            cell.star1Button.setImage(UIImage(systemName: "star.fill"), for: .normal)
+            cell.star2Button.setImage(UIImage(systemName: "star.fill"), for: .normal)
+            cell.star3Button.setImage(UIImage(systemName: "star"), for: .normal)
+            cell.star4Button.setImage(UIImage(systemName: "star"), for: .normal)
+            cell.star5Button.setImage(UIImage(systemName: "star"), for: .normal)
+        case 3:
+            cell.star1Button.setImage(UIImage(systemName: "star.fill"), for: .normal)
+            cell.star2Button.setImage(UIImage(systemName: "star.fill"), for: .normal)
+            cell.star3Button.setImage(UIImage(systemName: "star.fill"), for: .normal)
+            cell.star4Button.setImage(UIImage(systemName: "star"), for: .normal)
+            cell.star5Button.setImage(UIImage(systemName: "star"), for: .normal)
+        case 4:
+            cell.star1Button.setImage(UIImage(systemName: "star.fill"), for: .normal)
+            cell.star2Button.setImage(UIImage(systemName: "star.fill"), for: .normal)
+            cell.star3Button.setImage(UIImage(systemName: "star.fill"), for: .normal)
+            cell.star4Button.setImage(UIImage(systemName: "star.fill"), for: .normal)
+            cell.star5Button.setImage(UIImage(systemName: "star"), for: .normal)
+        case 4.5:
+            cell.star1Button.setImage(UIImage(systemName: "star.fill"), for: .normal)
+            cell.star2Button.setImage(UIImage(systemName: "star.fill"), for: .normal)
+            cell.star3Button.setImage(UIImage(systemName: "star.fill"), for: .normal)
+            cell.star4Button.setImage(UIImage(systemName: "star.fill"), for: .normal)
+            cell.star5Button.setImage(UIImage(systemName: "star.fill"), for: .normal)
+        case 5:
+            cell.star1Button.setImage(UIImage(systemName: "star.fill"), for: .normal)
+            cell.star2Button.setImage(UIImage(systemName: "star.fill"), for: .normal)
+            cell.star3Button.setImage(UIImage(systemName: "star.fill"), for: .normal)
+            cell.star4Button.setImage(UIImage(systemName: "star.fill"), for: .normal)
+            cell.star5Button.setImage(UIImage(systemName: "star.fill"), for: .normal)
+            
+        default:
+            return UICollectionViewCell()
+        }
         return cell
     }
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
+    
 }
 
 extension Section3TableViewCell: UICollectionViewDelegateFlowLayout{

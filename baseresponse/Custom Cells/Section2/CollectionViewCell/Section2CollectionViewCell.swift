@@ -10,9 +10,9 @@ import UIKit
 
 class Section2CollectionViewCell: UICollectionViewCell {
 
-    @IBOutlet weak var st2_colCell_labelTitle: UILabel!
-    @IBOutlet weak var st2_colCell_labelSubTit: UILabel!
-    @IBOutlet weak var st2_colCell_img: UIImageView!
+    @IBOutlet weak var thumbnailTitleLabel: UILabel!
+    @IBOutlet weak var thumbnailSubTitleLabel: UILabel!
+    @IBOutlet weak var thumbnailImageView: UIImageView!
     
     
     override func awakeFromNib() {
