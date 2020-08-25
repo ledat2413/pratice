@@ -17,7 +17,7 @@ class Section3TableViewCell: UITableViewCell {
     var dataForYou:[ForYou] = []
     private let cellIdentifier = "Section3CollectionViewCell"
     private let viewControllerIdentifier = "DetailViewController"
-    
+    var collectionCallBack: ((_ forYou: ForYou) -> Void)?
     
     //MARK: --View Lifecycle
     override func awakeFromNib() {
@@ -30,17 +30,17 @@ class Section3TableViewCell: UITableViewCell {
     }
     
     //MARK: --Navigation Segue
-    func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let forYouDetailVC = segue.destination as? DetailViewController, let forYou = sender as? ForYou {
-            forYouDetailVC.dataForYou = forYou
-        }
-    }
-
-    private func showDetailView(forYou: ForYou){
-        let detailForYouVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: viewControllerIdentifier) as! DetailViewController
-        detailForYouVC.dataForYou = ForYou(itemRatingScore: forYou.itemRatingScore, brandID: forYou.brandID, currency: forYou.currency, id: forYou.id, shopID: forYou.shopID, itemImg: forYou.itemImg, itemTitle: forYou.itemTitle, categoryID: forYou.categoryID, itemDiscountPrice: forYou.itemDiscountPrice, itemPrice: forYou.itemPrice, itemID: forYou.itemID, itemDiscount: forYou.itemDiscount, itemURL: forYou.itemURL, skuID: forYou.skuID)
+//   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if let forYouDetailVC = segue.destination as? DetailViewController, let forYou = sender as? ForYou {
+//            forYouDetailVC.dataForYou = forYou
+//        }
+//    }
+//
+//    private func showDetailView(forYou: ForYou){
+//        let detailForYouVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: viewControllerIdentifier) as! DetailViewController
+//        detailForYouVC.dataForYou = ForYou(itemRatingScore: forYou.itemRatingScore, brandID: forYou.brandID, currency: forYou.currency, id: forYou.id, shopID: forYou.shopID, itemImg: forYou.itemImg, itemTitle: forYou.itemTitle, categoryID: forYou.categoryID, itemDiscountPrice: forYou.itemDiscountPrice, itemPrice: forYou.itemPrice, itemID: forYou.itemID, itemDiscount: forYou.itemDiscount, itemURL: forYou.itemURL, skuID: forYou.skuID)
 //        present(detailForYouVC,animated: true,completion: nil)
-    }
+//    }
 
     //MARK: --Load Data
     func loadForYou(dataForYou:[ForYou]){
@@ -59,9 +59,10 @@ class Section3TableViewCell: UITableViewCell {
 extension Section3TableViewCell: UICollectionViewDelegate, UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let forYou = dataForYou[indexPath.row]
-        collectionView.deselectItem(at: indexPath, animated: true)
-        showDetailView(forYou: forYou)
+        self.collectionCallBack?(dataForYou[indexPath.row])
+//        let forYou = dataForYou[indexPath.row]
+//        collectionView.deselectItem(at: indexPath, animated: true)
+//        showDetailView(forYou: forYou)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

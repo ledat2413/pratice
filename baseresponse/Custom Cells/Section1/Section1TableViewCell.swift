@@ -57,6 +57,7 @@ class Section1TableViewCell: UITableViewCell {
 
 extension Section1TableViewCell: UICollectionViewDelegate, UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
         if collectionView.tag == 0 {
             return dataSource.count
         }
@@ -65,8 +66,6 @@ extension Section1TableViewCell: UICollectionViewDelegate, UICollectionViewDataS
         }
         return 1
     }
-    
-    
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
