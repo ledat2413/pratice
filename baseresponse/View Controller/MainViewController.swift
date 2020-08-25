@@ -77,6 +77,7 @@ extension MainViewController: UITableViewDataSource{
     }
     
     
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         switch indexPath.section {
@@ -95,6 +96,9 @@ extension MainViewController: UITableViewDataSource{
         case 3:
              let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier[3], for: indexPath) as! Section3TableViewCell
              cell.loadForYou(dataForYou: dataForYou)
+             cell.collectionCallBack = { (forYou) in
+                print(forYou)
+             }
             return cell
         default:
             return UITableViewCell()
@@ -110,6 +114,7 @@ extension MainViewController: UITableViewDataSource{
 
 extension MainViewController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        print("vvvvv")
     }
+    
 }
