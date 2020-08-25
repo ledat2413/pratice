@@ -33,7 +33,7 @@
                     </imageView>
                 </subviews>
             </view>
-            <color key="backgroundColor" systemColor="systemGray4Color" red="0.81960784310000001" green="0.81960784310000001" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
             <constraints>
                 <constraint firstItem="Kb2-Gs-AX2" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="B7k-Sl-KFL"/>
                 <constraint firstAttribute="bottom" secondItem="n6n-Am-bXS" secondAttribute="bottom" id="Dn6-TB-WKM"/>

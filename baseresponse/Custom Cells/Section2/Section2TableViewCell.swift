@@ -11,42 +11,37 @@ import UIKit
 class Section2TableViewCell: UITableViewCell {
 
     //MARK: --Vars
-    var dataSource2:[Trendings] = []
+    private var cellIdentifier = "Section2CollectionViewCell"
+    var dataTrending:[Trendings] = []
     
     //MARK: --IBOutlet
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var st2_col_labelFind: UILabel!
-    @IBOutlet weak var st2_col_btnViewMore: UIButton!
+    @IBOutlet weak var section2FindLabel: UILabel!
+    @IBOutlet weak var section2ForYouLabel: UILabel!
+    @IBOutlet weak var section2ViewMoreButton1: UIButton!
+    @IBOutlet weak var section2ViewMoreButton2: UIButton!
     
     
     //MARK: --IBAction
-    @IBAction func st2_col_btnAction(_ sender: Any) {
+    @IBAction func sectionViewMoreAction1(_ sender: Any) {
+    }
+    
+    @IBAction func sectionViewMoreAction2(_ sender: Any) {
     }
     
     //MARK: --View Lifecycle
     override func awakeFromNib() {
         super.awakeFromNib()
-        collectionView.register(UINib(nibName: "Section2CollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "Section2CollectionViewCell")
+        collectionView.register(UINib(nibName: cellIdentifier, bundle: nil), forCellWithReuseIdentifier: cellIdentifier)
         collectionView.delegate = self
         collectionView.dataSource = self
-        loadTrendings()
-        // Initialization code
-    }
-    
-    //MARK: --Func
-    private func loadTrendings(){
-        MGConnection.requestObject(APIRouter.getAllHomeData, Data.self) { (result, error) in
-            guard error == nil else{
-                print("Error \(String(describing: error?.mErrorMessage))")
-                return
-            }
-            if let results = result {
-                self.dataSource2 = results.trending
-            }
-            self.collectionView.reloadData()
-        }
+        loadTrending(dataTrending: dataTrending)
     }
 
+    func loadTrending(dataTrending:[Trendings]){
+        self.dataTrending = dataTrending
+        collectionView.reloadData()
+    }
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
@@ -57,16 +52,17 @@ class Section2TableViewCell: UITableViewCell {
 
 extension Section2TableViewCell: UICollectionViewDataSource, UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dataSource2.count
+        return dataTrending.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Section2CollectionViewCell", for: indexPath) as! Section2CollectionViewCell
+        
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as? Section2CollectionViewCell else {fatalError()}
     
-        let trending = dataSource2[indexPath.row]
-        cell.st2_colCell_labelTitle.text = trending.popularName
-        cell.st2_colCell_labelSubTit.text = trending.id
-        cell.st2_colCell_img.sd_setImage(with: URL(string: trending.items[0].itemImg),placeholderImage: UIImage(named: "heart"))
+        let trending = dataTrending[indexPath.row]
+        cell.thumbnailTitleLabel.text = trending.popularName
+        cell.thumbnailSubTitleLabel.text = trending.id
+        cell.thumbnailImageView.sd_setImage(with: URL(string: trending.items[0].itemImg),placeholderImage: UIImage(named: "heart"))
         return cell
     }
     

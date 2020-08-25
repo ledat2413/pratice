@@ -140,7 +140,7 @@ class Item: Mappable{
 
 class ForYou: Mappable{
 
-    var itemRatingScore: String = ""
+    var itemRatingScore: Int = 0
     var brandID: String = ""
     var currency: String = ""
     var id: String = ""
@@ -157,6 +157,22 @@ class ForYou: Mappable{
 
     required init?(map: Map) {
 }
+    required init(itemRatingScore: Int, brandID: String, currency: String, id: String, shopID: Int, itemImg: String, itemTitle: String, categoryID: Int, itemDiscountPrice: String, itemPrice: String, itemID: Int, itemDiscount: String, itemURL: String, skuID: String){
+        self.itemRatingScore = itemRatingScore
+        self.brandID = brandID
+        self.brandID = brandID
+        self.id = id
+        self.shopID = shopID
+        self.itemImg = itemImg
+        self.skuID = skuID
+        self.itemTitle = itemTitle
+        self.categoryID = categoryID
+        self.itemDiscountPrice = itemDiscountPrice
+        self.itemPrice = itemPrice
+        self.itemID = itemID
+        self.itemDiscount = itemDiscount
+        self.itemURL = itemURL
+    }
 
     func mapping(map: Map) {
         itemRatingScore <- map["itemRatingScore"]

@@ -47,7 +47,7 @@
 //     private func showItemView(item: Items){
 //           let itemVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "DetailView") as! DetailItemViewController
 //        itemVC.dataSource = Items(id: item.id, title: item.title, price: item.price, url: item.url,isFavorite: item.isFavorite)
-//        present(itemVC, animated: true, completion: nil)
+////        present(itemVC, animated: true, completion: nil)
 //       }
 //
 //}

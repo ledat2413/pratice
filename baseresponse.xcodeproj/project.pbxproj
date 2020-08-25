@@ -47,6 +47,7 @@
 		C29BFE8F24EA400B003091FB /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29BFE8E24EA400B003091FB /* MainViewController.swift */; };
 		C29BFE9724EA6684003091FB /* HeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29BFE9524EA6684003091FB /* HeaderTableViewCell.swift */; };
 		C29BFE9824EA6684003091FB /* HeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C29BFE9624EA6684003091FB /* HeaderTableViewCell.xib */; };
+		C2CA752524F3D0BA0047C38E /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CA752424F3D0BA0047C38E /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -95,6 +96,7 @@
 		C29BFE8E24EA400B003091FB /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		C29BFE9524EA6684003091FB /* HeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderTableViewCell.swift; sourceTree = "<group>"; };
 		C29BFE9624EA6684003091FB /* HeaderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderTableViewCell.xib; sourceTree = "<group>"; };
+		C2CA752424F3D0BA0047C38E /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,13 +131,10 @@
 		C20C433924E4E7150035713A /* Custom Cells */ = {
 			isa = PBXGroup;
 			children = (
-				C28F587824EE23F800A25D7F /* SectionHeader */,
 				C266BA9924ECFD8000C39769 /* Section3 */,
 				C266BA8724ECCF2300C39769 /* Section2 */,
-				C29BFE9024EA6578003091FB /* Section1 */,
-				C20C433A24E4E7520035713A /* ItemsCollectionViewCell.swift */,
-				C25D7D5C24E630A800E2CD63 /* FavoriteCollectionViewCell.swift */,
-				C25D7D5E24E6453700E2CD63 /* DetailCollectionViewCell.swift */,
+				C28F587824EE23F800A25D7F /* Section1 */,
+				C29BFE9024EA6578003091FB /* SectionHeader */,
 			);
 			path = "Custom Cells";
 			sourceTree = "<group>";
@@ -207,22 +206,20 @@
 		C26A01BE24E4D10E00FEF3A1 /* View Controller */ = {
 			isa = PBXGroup;
 			children = (
-				C2920B4724E42C95001FC3DA /* ViewController.swift */,
-				C25D7D5624E62ABC00E2CD63 /* DetailItemViewController.swift */,
-				C25D7D5A24E6308D00E2CD63 /* FavoriteViewController.swift */,
 				C29BFE8E24EA400B003091FB /* MainViewController.swift */,
+				C2CA752424F3D0BA0047C38E /* DetailViewController.swift */,
 			);
 			path = "View Controller";
 			sourceTree = "<group>";
 		};
-		C28F587824EE23F800A25D7F /* SectionHeader */ = {
+		C28F587824EE23F800A25D7F /* Section1 */ = {
 			isa = PBXGroup;
 			children = (
 				C28F587D24EE24EF00A25D7F /* CollectionViewCell */,
 				C28F587924EE241D00A25D7F /* Section1TableViewCell.swift */,
 				C28F587A24EE241D00A25D7F /* Section1TableViewCell.xib */,
 			);
-			path = SectionHeader;
+			path = Section1;
 			sourceTree = "<group>";
 		};
 		C28F587D24EE24EF00A25D7F /* CollectionViewCell */ = {
@@ -257,6 +254,7 @@
 		C2920B4224E42C95001FC3DA /* baseresponse */ = {
 			isa = PBXGroup;
 			children = (
+				C2CA752624F405EE0047C38E /* A */,
 				C25D7D6024E67BB700E2CD63 /* Helper */,
 				C20C433D24E543BE0035713A /* ViewModel */,
 				C20C433924E4E7150035713A /* Custom Cells */,
@@ -294,14 +292,27 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		C29BFE9024EA6578003091FB /* Section1 */ = {
+		C29BFE9024EA6578003091FB /* SectionHeader */ = {
 			isa = PBXGroup;
 			children = (
 				C266BA8224ECC6DF00C39769 /* CollectionViewCell */,
 				C29BFE9524EA6684003091FB /* HeaderTableViewCell.swift */,
 				C29BFE9624EA6684003091FB /* HeaderTableViewCell.xib */,
 			);
-			path = Section1;
+			path = SectionHeader;
+			sourceTree = "<group>";
+		};
+		C2CA752624F405EE0047C38E /* A */ = {
+			isa = PBXGroup;
+			children = (
+				C20C433A24E4E7520035713A /* ItemsCollectionViewCell.swift */,
+				C25D7D5C24E630A800E2CD63 /* FavoriteCollectionViewCell.swift */,
+				C25D7D5E24E6453700E2CD63 /* DetailCollectionViewCell.swift */,
+				C2920B4724E42C95001FC3DA /* ViewController.swift */,
+				C25D7D5624E62ABC00E2CD63 /* DetailItemViewController.swift */,
+				C25D7D5A24E6308D00E2CD63 /* FavoriteViewController.swift */,
+			);
+			path = A;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -455,6 +466,7 @@
 				C2920B4424E42C95001FC3DA /* AppDelegate.swift in Sources */,
 				C2920B4624E42C95001FC3DA /* SceneDelegate.swift in Sources */,
 				C28F587B24EE241D00A25D7F /* Section1TableViewCell.swift in Sources */,
+				C2CA752524F3D0BA0047C38E /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -601,7 +613,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = baseresponse/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -620,7 +632,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = baseresponse/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

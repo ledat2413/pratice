@@ -9,18 +9,30 @@
 import UIKit
 
 class Section3CollectionViewCell: UICollectionViewCell {
-
     
-    @IBOutlet weak var st3_colCell_imgView: UIImageView!
+    //MARK: --Vars
+    var dataRating:[ForYou] = []
     
-    @IBOutlet weak var st3_colCell_labelTitle: UILabel!
-    @IBOutlet weak var st3_colCell_labelNewPrice: UILabel!
-    @IBOutlet weak var st3_colCell_labelOldPrice: UILabel!
-    @IBOutlet weak var st3_colCell_labelPercent: UILabel!
+    //MARK: --IBOutlet
     
+    @IBOutlet weak var thumbnailImageView: UIImageView!
+    @IBOutlet weak var thumbnailTitleLabel: UILabel!
+    @IBOutlet weak var thumbnailNewPriceLabel: UILabel!
+    @IBOutlet weak var thumbnailOldPriceLabel: UILabel!
+    @IBOutlet weak var thumbnailPercenLabel: UILabel!
+    @IBOutlet weak var thumbnailRatingLabel: UILabel!
+    
+    @IBOutlet weak var star1Button: UIButton!
+    @IBOutlet weak var star2Button: UIButton!
+    @IBOutlet weak var star3Button: UIButton!
+    @IBOutlet weak var star4Button: UIButton!
+    @IBOutlet weak var star5Button: UIButton!
+    //MARK: --View Lifecycle
     override func awakeFromNib() {
         super.awakeFromNib()
         self.layer.cornerRadius = 10
+        
     }
-
 }
+    
+

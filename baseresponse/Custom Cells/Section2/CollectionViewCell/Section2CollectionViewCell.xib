@@ -58,9 +58,9 @@
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="137" height="157"/>
             <connections>
-                <outlet property="st2_colCell_img" destination="8mz-Rl-OQw" id="gJk-TG-fxy"/>
-                <outlet property="st2_colCell_labelSubTit" destination="nvu-Mc-WDH" id="f7g-TK-l2A"/>
-                <outlet property="st2_colCell_labelTitle" destination="5h3-IL-zN5" id="ABd-j1-WZc"/>
+                <outlet property="thumbnailImageView" destination="8mz-Rl-OQw" id="var-LC-RFa"/>
+                <outlet property="thumbnailSubTitleLabel" destination="nvu-Mc-WDH" id="lHq-wX-wvg"/>
+                <outlet property="thumbnailTitleLabel" destination="5h3-IL-zN5" id="LXO-eL-v2O"/>
             </connections>
             <point key="canvasLocation" x="200.00000000000003" y="175.44642857142856"/>
         </collectionViewCell>
