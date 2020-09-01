@@ -8,31 +8,32 @@
 
 import Foundation
 import ObjectMapper
+import RealmSwift
 
 class Status: Mappable{
     var message: String = ""
     var code: Int = 0
-
+    
     required  init() {
     }
-
-    required convenience init?(map: Map) {
-        self.init()
+    
+    required  init?(map: Map) {
     }
-
+    
     func mapping(map: Map) {
         message <- map["message"]
         code <- map["code"]
     }
 }
 
-class Data: Mappable{
-    var promotion: [Promotion] = []
-    var flashSale: [FlashSale] = []
-    var trending: [Trendings] = []
-    var foryou: [ForYou] = []
+class Data: Object, Mappable{
+    dynamic var promotion: [Promotion] = []
+    dynamic  var flashSale: [FlashSale] = []
+    dynamic var trending: [Trendings] = []
+    dynamic  var foryou: [ForYou] = []
     
-     required init?(map: Map) {
+    required convenience init?(map: Map) {
+        self.init()
     }
     
     func mapping(map: Map) {
@@ -43,14 +44,15 @@ class Data: Mappable{
     }
 }
 
-class Promotion: Mappable{
-
-    var id: Int = 0
-    var url: String = ""
-
-    required init?(map: Map) {
+class Promotion: Object,Mappable{
+    
+    dynamic var id: Int = 0
+    dynamic var url: String = ""
+    
+    required convenience init?(map: Map) {
+        self.init()
     }
-
+    
     func mapping(map: Map) {
         id <- map["id"]
         url <- map["imageURL"]
@@ -58,27 +60,28 @@ class Promotion: Mappable{
 }
 
 
-class FlashSale: Mappable{
-
-    var itemTitle: String = ""
-    var itemSoldCnt: String = " "
-    var itemDiscount: String = ""
-    var almostSoldOut: String = ""
-    var itemCurrentStock: String = ""
-    var itemId: String = ""
-    var itemImg: String = ""
-    var itemHaveStock: String = ""
-    var itemDiscountPrice: String = ""
-    var itemPrice: String = ""
-    var currency: String = ""
-    var id: String = ""
-    var itemUrl: String = ""
-
-    required init?(map: Map) {
+class FlashSale: Object, Mappable{
+    
+    dynamic var itemTitle: String = ""
+    dynamic var itemSoldCnt: String = " "
+    dynamic var itemDiscount: String = ""
+    dynamic  var almostSoldOut: String = ""
+    dynamic  var itemCurrentStock: String = ""
+    dynamic var itemId: String = ""
+    dynamic  var itemImg: String = ""
+    dynamic  var itemHaveStock: String = ""
+    dynamic  var itemDiscountPrice: String = ""
+    dynamic   var itemPrice: String = ""
+    dynamic  var currency: String = ""
+    dynamic  var id: String = ""
+    dynamic  var itemUrl: String = ""
+    
+    required convenience init?(map: Map) {
+        self.init()
     }
-
+    
     func mapping(map: Map) {
-       itemTitle <- map["itemTitle"]
+        itemTitle <- map["itemTitle"]
         itemSoldCnt <- map["itemSoldCnt"]
         itemDiscount <- map["itemDiscount"]
         almostSoldOut <- map["almostSoldOut"]
@@ -91,23 +94,24 @@ class FlashSale: Mappable{
         currency <- map["currency"]
         id <- map["id"]
         itemUrl <- map["itemUrl"]
-
+        
     }
 }
 
-class Trendings: Mappable{
-
-    var entityType: String = ""
-    var popularName: String = ""
-    var id: String = ""
-    var itemCnt: String = ""
-    var itemWantCnt: String = ""
-    var popularSubName: String = ""
-    var items: [Item] = []
-
-    required init?(map: Map) {
+class Trendings: Object, Mappable{
+    
+    dynamic  var entityType: String = ""
+    dynamic   var popularName: String = ""
+    dynamic  var id: String = ""
+    dynamic   var itemCnt: String = ""
+    dynamic   var itemWantCnt: String = ""
+    dynamic  var popularSubName: String = ""
+    dynamic  var items: [Item] = []
+    
+    required convenience init?(map: Map) {
+        self.init()
     }
-
+    
     func mapping(map: Map) {
         entityType <- map["entityType"]
         popularName <- map["popularName"]
@@ -116,64 +120,51 @@ class Trendings: Mappable{
         itemWantCnt <- map["itemWantCnt"]
         popularSubName <- map["popularSubName"]
         items <- map["items"]
-
+        
     }
 }
 
-class Item: Mappable{
-
-    var itemId: String = ""
-    var itemImg: String = ""
-    var cateId: String = ""
-    var itemUrl: String = ""
-
-    required init?(map: Map) {
-       }
-
-       func mapping(map: Map) {
+class Item: Object, Mappable{
+    
+    dynamic var itemId: String = ""
+    dynamic  var itemImg: String = ""
+    dynamic  var cateId: String = ""
+    dynamic  var itemUrl: String = ""
+    
+    required convenience init?(map: Map) {
+        self.init()
+    }
+    
+    func mapping(map: Map) {
         itemId <- map["itemId"]
         itemImg <- map["itemImg"]
         cateId <- map["cateId"]
         itemUrl <- map["itemUrl"]
-       }
-}
-
-class ForYou: Mappable{
-
-    var itemRatingScore: Int = 0
-    var brandID: String = ""
-    var currency: String = ""
-    var id: String = ""
-    var shopID: Int = 0
-    var itemImg: String = ""
-    var skuID: String = ""
-    var itemTitle: String = ""
-    var categoryID: Int = 0
-    var itemDiscountPrice: String = ""
-    var itemPrice: String = ""
-    var itemID: Int = 0
-    var itemDiscount: String = ""
-    var itemURL: String = ""
-
-    required init?(map: Map) {
-}
-    required init(itemRatingScore: Int, brandID: String, currency: String, id: String, shopID: Int, itemImg: String, itemTitle: String, categoryID: Int, itemDiscountPrice: String, itemPrice: String, itemID: Int, itemDiscount: String, itemURL: String, skuID: String){
-        self.itemRatingScore = itemRatingScore
-        self.brandID = brandID
-        self.brandID = brandID
-        self.id = id
-        self.shopID = shopID
-        self.itemImg = itemImg
-        self.skuID = skuID
-        self.itemTitle = itemTitle
-        self.categoryID = categoryID
-        self.itemDiscountPrice = itemDiscountPrice
-        self.itemPrice = itemPrice
-        self.itemID = itemID
-        self.itemDiscount = itemDiscount
-        self.itemURL = itemURL
     }
+}
 
+class ForYou: Object, Mappable{
+    
+    @objc dynamic var itemRatingScore: Int = 0
+    @objc dynamic var brandID: String = ""
+    @objc dynamic var currency: String = ""
+    @objc dynamic  var id: String = ""
+    @objc dynamic var shopID: Int = 0
+    @objc dynamic var itemImg: String = ""
+    @objc dynamic  var skuID: String = ""
+    @objc dynamic  var itemTitle: String = ""
+    @objc dynamic  var categoryID: Int = 0
+    @objc dynamic var itemDiscountPrice: String = ""
+    @objc dynamic  var itemPrice: String = ""
+    @objc dynamic  var itemID: Int = 0
+    @objc dynamic  var itemDiscount: String = ""
+    @objc dynamic  var itemURL: String = ""
+    @objc dynamic var isFavorite: Bool = false
+    
+    required convenience init?(map: Map) {
+        self.init()
+    }
+    
     func mapping(map: Map) {
         itemRatingScore <- map["itemRatingScore"]
         brandID <- map["brandID"]
@@ -190,4 +181,92 @@ class ForYou: Mappable{
         itemDiscount <- map["itemDiscount"]
         itemURL <- map["itemURL"]
     }
+    
+    override class func primaryKey() -> String? {
+        return "id"
+    }
+    
+    //MARK: --Func
+    
+    static func getFavoriteById(id: String) -> ForYou? {
+           let data = try! Realm()
+           return data.objects(ForYou.self).filter("id = '\(id)'").first
+       }
+    
+    func save() {
+        let database = try! Realm()
+        try! database.write {
+            database.add(self, update: .all)
+        }
+    }
+    
+    func remove() {
+        do {
+            let realm = try Realm()
+            try realm.write {
+                realm.delete(self)
+            }
+        } catch {
+            print("Lỗi Delete đối tượng")
+        }
+    }
+}
+
+class Cart: Object {
+    
+    @objc dynamic var itemRatingScore: Int = 0
+    @objc dynamic var brandID: String = ""
+    @objc dynamic var currency: String = ""
+    @objc dynamic  var id: String = ""
+    @objc dynamic var shopID: Int = 0
+    @objc dynamic var itemImg: String = ""
+    @objc dynamic  var skuID: String = ""
+    @objc dynamic  var itemTitle: String = ""
+    @objc dynamic  var categoryID: Int = 0
+    @objc dynamic var itemDiscountPrice: String = ""
+    @objc dynamic  var itemPrice: String = ""
+    @objc dynamic  var itemID: Int = 0
+    @objc dynamic  var itemDiscount: String = ""
+    @objc dynamic  var itemURL: String = ""
+    @objc dynamic var quanlity: Int = 0
+    
+    required convenience init?(map: Map) {
+        self.init()
+    }
+    override class func primaryKey() -> String? {
+        return "id"
+    }
+    
+    //MARK: --Func
+    static func getCartById(id: String) -> Cart? {
+        let data = try! Realm()
+        return data.objects(Cart.self).filter("id = '\(id)'").first
+    }
+        
+    func save() {
+        let database = try! Realm()
+        try! database.write {
+            database.add(self, update: .all)
+        }
+    }
+    
+    func updateQuanlity(quanlity: Int) {
+        let realm = try! Realm()
+        try! realm.write { [weak self] in
+            guard let weakSelf = self else { return }
+            weakSelf.quanlity = quanlity
+        }
+    }
+    
+    func remove() {
+        do {
+            let realm = try Realm()
+            try realm.write {
+                realm.delete(self)
+            }
+        } catch {
+            print("Lỗi Delete đối tượng")
+        }
+    }
+    
 }

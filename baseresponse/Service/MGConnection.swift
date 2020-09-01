@@ -10,6 +10,7 @@ import Foundation
 import Alamofire
 import AlamofireObjectMapper
 import ObjectMapper
+import RealmSwift
 
 class MGConnection {
     
@@ -75,7 +76,6 @@ class MGConnection {
                             let err: BaseResponseError = BaseResponseError.init(NetworkErrorType.API_ERROR, code, message)
                             completion(nil, err)
                         }
-
                     }
                 } else {
                     let err: BaseResponseError = BaseResponseError.init(NetworkErrorType.HTTP_ERROR, (response.response?.statusCode)!, "Request is error!")
