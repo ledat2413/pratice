@@ -8,13 +8,15 @@
 
 import Foundation
 import ObjectMapper
+import RealmSwift
 
 
-class BaseResponse<T: Mappable>: Mappable{
-    var status: Status = Status()
-    var result: T?
+class BaseResponse<T: Mappable>: Object, Mappable{
+   dynamic var status: Status = Status()
+   dynamic var result: T?
     
-    required init?(map: Map) {
+    required convenience init?(map: Map) {
+        self.init()
     }
     
     func mapping(map: Map) {

@@ -30,16 +30,17 @@
                         <constraints>
                             <constraint firstAttribute="height" constant="25" id="2dM-Oy-2CD"/>
                         </constraints>
-                        <state key="normal" title="Button"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <state key="normal" title="Xem thêm"/>
                         <connections>
                             <action selector="viewMore1Button:" destination="gTV-IL-0wX" eventType="touchUpInside" id="JSt-JO-0re"/>
                         </connections>
                     </button>
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="M67-aw-C2l">
-                        <rect key="frame" x="10" y="35" width="404" height="160"/>
+                        <rect key="frame" x="10" y="35" width="404" height="170"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="160" id="mkm-vv-YEe"/>
+                            <constraint firstAttribute="height" constant="170" id="mkm-vv-YEe"/>
                         </constraints>
                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="weW-Nj-RFo">
                             <size key="itemSize" width="130" height="146"/>
@@ -58,11 +59,12 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HJj-u3-WhT">
-                        <rect key="frame" x="308" y="223" width="106" height="25"/>
+                        <rect key="frame" x="300" y="223" width="114" height="25"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="25" id="b1H-3s-XmG"/>
                         </constraints>
-                        <state key="normal" title="Button"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <state key="normal" title="Xem thêm"/>
                         <connections>
                             <action selector="viewMore2Button:" destination="gTV-IL-0wX" eventType="touchUpInside" id="ZZQ-Zq-3Hp"/>
                         </connections>
@@ -73,7 +75,7 @@
                 <constraint firstAttribute="trailing" secondItem="1Yb-57-RfR" secondAttribute="trailing" constant="196" id="34G-kV-aOh"/>
                 <constraint firstAttribute="trailing" secondItem="HJj-u3-WhT" secondAttribute="trailing" constant="10" id="AoW-D1-auo"/>
                 <constraint firstItem="M67-aw-C2l" firstAttribute="top" secondItem="Teg-Nn-HAf" secondAttribute="bottom" constant="10" id="Azo-pA-dwg"/>
-                <constraint firstItem="HJj-u3-WhT" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="308" id="CdC-mo-SxH"/>
+                <constraint firstItem="HJj-u3-WhT" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="300" id="CdC-mo-SxH"/>
                 <constraint firstItem="VBl-zG-gfa" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="FDT-tg-FHW"/>
                 <constraint firstItem="Teg-Nn-HAf" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="KJc-fd-fT7"/>
                 <constraint firstItem="Teg-Nn-HAf" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="PMb-NX-g5U"/>
