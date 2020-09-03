@@ -10,7 +10,7 @@ import Foundation
 
 
 struct Production {
-    static let BASE_URL: String = "http://192.168.1.85:5001"
+    static let BASE_URL: String = "http://taluan.webstarterz.com"
 }
 enum NetworkErrorType {
     case API_ERROR

@@ -9,8 +9,9 @@
 import UIKit
 
 class TableViewCell: UITableViewCell {
-
+    
     var callbackValue: ((_ value: Int) -> Void)?
+    @IBOutlet weak var stepper: UIStepper!
     @IBOutlet weak var thumbnailImageView: UIImageView!
     @IBOutlet weak var thumbnailTitle: UILabel!
     @IBOutlet weak var thumbnailPrice: UILabel!
@@ -28,7 +29,9 @@ class TableViewCell: UITableViewCell {
         callbackValue?(Int(sender.value))
     }
     
-    func loadData(data: Cart ) {
+    func loadData(data: Cart) {
+       
+        stepper.value = Double(data.quanlity)
         thumbnailTitle.text  = data.itemTitle
         thumbnailPrice.text = data.itemDiscountPrice
         thumbnailCountLabel.text = "\(data.quanlity)"

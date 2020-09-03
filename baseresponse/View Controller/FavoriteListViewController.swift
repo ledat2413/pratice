@@ -13,10 +13,7 @@ class FavoriteListViewController: UIViewController {
     
     //MARK: --Vars
     var cellIdentifier = "FavoriteCollectionViewCell"
-    let realm = try! Realm()
-    var favorite: Results<ForYou>{
-        get {return realm.objects(ForYou.self)}
-    }
+    let dataFavorite = ForYou.getListFavorite()
     
     //MARK: --IBOutlet
     @IBOutlet weak var collectionView: UICollectionView!
@@ -24,17 +21,22 @@ class FavoriteListViewController: UIViewController {
     //MARK: --View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView.dataSource = self
-        collectionView.delegate = self
-        collectionView.register(UINib(nibName: cellIdentifier, bundle: nil), forCellWithReuseIdentifier: cellIdentifier)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        collectionView.reloadData()
+        setUpUI()
     }
     
     //MARK: --Func
+    
+    private func setUpUI(){
+        collectionView.reloadData()
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.register(UINib(nibName: cellIdentifier, bundle: nil), forCellWithReuseIdentifier: cellIdentifier)
+        
+    }
     private func showItemView(withItem forYou: ForYou){
         let itemVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "DetailViewController") as! DetailViewController
         itemVC.dataForYou = forYou
@@ -45,31 +47,27 @@ class FavoriteListViewController: UIViewController {
 extension FavoriteListViewController: UICollectionViewDelegate, UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        let item = favorite[indexPath.row]
-        try! self.realm.write({
-            self.realm.delete(item)
-        })
+        
+        dataFavorite[indexPath.row].remove()
         collectionView.deleteItems(at: [indexPath])
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let item = favorite[indexPath.row]
-        try! self.realm.write({
-            if (item.isFavorite == false){
-                item.isFavorite = true
-            }
-        })
+        
+        let item = dataFavorite[indexPath.row]
+        item.checkFavorite(isFavorite: item.isFavorite)
         collectionView.reloadItems(at: [indexPath])
         showItemView(withItem: item)
     }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return favorite.count
+        return dataFavorite.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as? FavoriteCollectionViewCell else {fatalError()}
-        let data = favorite[indexPath.row]
-        cell.loadData(data: data)
+        let dataCell = dataFavorite[indexPath.row]
+        cell.loadData(data: dataCell)
         return cell
     }
 }

@@ -28,7 +28,7 @@ enum APIRouter: URLRequestConvertible {
     private var path: String {
         switch self {
         case .getAllHomeData:
-            return "/Home/GetAllHomeData"
+            return "/App/TestApi/home.json"
        
         }
     }
