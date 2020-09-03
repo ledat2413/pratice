@@ -26,13 +26,11 @@ class DetailViewController: UIViewController {
     //MARK: --View LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        setupUI()
-        
+        setupUI()       
     }
     
     //MARK: --IBAction
@@ -92,7 +90,7 @@ class DetailViewController: UIViewController {
     }
     
     private func setupUI() {
-        self.title = "Detail"
+        self.title = "Detail Item"
         tableView.delegate = self
         tableView.dataSource = self
         tableView.reloadData()

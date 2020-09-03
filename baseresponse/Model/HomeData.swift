@@ -188,10 +188,15 @@ class ForYou: Object, Mappable{
     
     //MARK: --Func
     
+    static func getListFavorite() -> Results<ForYou>{
+        let data = try! Realm()
+        return data.objects(ForYou.self)
+    }
+    
     static func getFavoriteById(id: String) -> ForYou? {
-           let data = try! Realm()
-           return data.objects(ForYou.self).filter("id = '\(id)'").first
-       }
+        let data = try! Realm()
+        return data.objects(ForYou.self).filter("id = '\(id)'").first
+    }
     
     func save() {
         let database = try! Realm()
@@ -209,64 +214,15 @@ class ForYou: Object, Mappable{
         } catch {
             print("Lỗi Delete đối tượng")
         }
+    }
+    
+    func checkFavorite(isFavorite: Bool){
+        let realm = try! Realm()
+        try! realm.write({
+            if (isFavorite == false){
+                self.isFavorite = true
+            }
+        })
     }
 }
 
-class Cart: Object {
-    
-    @objc dynamic var itemRatingScore: Int = 0
-    @objc dynamic var brandID: String = ""
-    @objc dynamic var currency: String = ""
-    @objc dynamic  var id: String = ""
-    @objc dynamic var shopID: Int = 0
-    @objc dynamic var itemImg: String = ""
-    @objc dynamic  var skuID: String = ""
-    @objc dynamic  var itemTitle: String = ""
-    @objc dynamic  var categoryID: Int = 0
-    @objc dynamic var itemDiscountPrice: String = ""
-    @objc dynamic  var itemPrice: String = ""
-    @objc dynamic  var itemID: Int = 0
-    @objc dynamic  var itemDiscount: String = ""
-    @objc dynamic  var itemURL: String = ""
-    @objc dynamic var quanlity: Int = 0
-    
-    required convenience init?(map: Map) {
-        self.init()
-    }
-    override class func primaryKey() -> String? {
-        return "id"
-    }
-    
-    //MARK: --Func
-    static func getCartById(id: String) -> Cart? {
-        let data = try! Realm()
-        return data.objects(Cart.self).filter("id = '\(id)'").first
-    }
-        
-    func save() {
-        let database = try! Realm()
-        try! database.write {
-            database.add(self, update: .all)
-        }
-    }
-    
-    func updateQuanlity(quanlity: Int) {
-        let realm = try! Realm()
-        try! realm.write { [weak self] in
-            guard let weakSelf = self else { return }
-            weakSelf.quanlity = quanlity
-        }
-    }
-    
-    func remove() {
-        do {
-            let realm = try Realm()
-            try realm.write {
-                realm.delete(self)
-            }
-        } catch {
-            print("Lỗi Delete đối tượng")
-        }
-    }
-    
-}

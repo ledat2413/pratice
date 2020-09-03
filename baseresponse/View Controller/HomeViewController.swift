@@ -22,10 +22,7 @@ class HomeViewController: UIViewController {
     
     public var dataForYou:[ForYou] = []
     
-    var forYouCallBack: ((_ forYou: ForYou) -> Void)?
-    
-    
-    private var cellIdentifier = ["Sec0CollectionViewCell","Sec1CollectionViewCell","Sec2CollectionViewCell","Sec3CollectionViewCell"]
+    let cellIdentifier = ["Sec0CollectionViewCell","Sec1CollectionViewCell","Sec2CollectionViewCell","Sec3CollectionViewCell"]
     
     //MARK: --IBOutlet
     @IBOutlet weak var collectionView: UICollectionView!
@@ -35,11 +32,8 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         
         collectionView.delegate = self
-        
         collectionView.dataSource = self
-        
         connectNib()
-        
         fetchAllHomeData()
     }
     
@@ -64,15 +58,12 @@ class HomeViewController: UIViewController {
     }
     
     func connectNib() {
-        collectionView.register(UINib(nibName: cellIdentifier[0], bundle: nil), forCellWithReuseIdentifier: cellIdentifier[0])
-        
-        collectionView.register(UINib(nibName: cellIdentifier[1], bundle: nil), forCellWithReuseIdentifier: cellIdentifier[1])
-        
-        collectionView.register(UINib(nibName: cellIdentifier[2], bundle: nil), forCellWithReuseIdentifier: cellIdentifier[2])
-        
-        collectionView.register(UINib(nibName: cellIdentifier[3], bundle: nil), forCellWithReuseIdentifier: cellIdentifier[3])
+        for i in cellIdentifier{
+            collectionView.register(UINib(nibName: i, bundle: nil), forCellWithReuseIdentifier: i)
+        }
     }
     
+    //MARK: --Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? DetailViewController, let forYou = sender as? ForYou {
             vc.dataForYou = forYou
@@ -144,7 +135,6 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         default:
             return UICollectionViewCell()
         }
-        
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
